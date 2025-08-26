@@ -1,0 +1,47 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>A2Z RTO Fees Calculator</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header class="header">
+    <div class="brand">
+      <img src="logo.png" alt="A2Z logo"/>
+      <div class="title">
+        <div class="name">A2Z INSTITUTE OF HEAVY EQUIPMENTS</div>
+        <div class="sub">An ISO Certified Institution</div>
+      </div>
+    </div>
+    <div class="call">Call: <strong>8590085591</strong></div>
+  </header>
+
+  <div class="container">
+    <h1>RTO Fees Calculator</h1>
+
+    <div class="section-label">Select an option:</div>
+    <div class="mode-row">
+      <button class="btn active" id="btn-fresher" aria-pressed="true">Fresher</button>
+      <button class="btn" id="btn-endorsement" aria-pressed="false">Endorsement</button>
+    </div>
+
+    <div class="checklist" id="checklist">
+      <label class="checkbox"><input type="checkbox" value="LMV"/> <span>LMV</span></label>
+      <label class="checkbox"><input type="checkbox" value="MCWG"/> <span>MCWG</span></label>
+      <label class="checkbox"><input type="checkbox" value="TRANS"/> <span>TRANS</span></label>
+      <label class="checkbox"><input type="checkbox" value="Trailer"/> <span>Trailer</span></label>
+      <label class="checkbox"><input type="checkbox" value="Forklift"/> <span>Forklift</span></label>
+    </div>
+
+    <div class="total" id="total" aria-live="polite"></div>
+    <button class="calc-btn" id="calc">Calculate Total</button>
+
+    <div class="footer">No per-item prices are displayed. Totals are computed according to internal rules.</div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
