@@ -1,11 +1,15 @@
-
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>A2Z RTO Fees Calculator</title>
+
+  <!-- Link to external stylesheet -->
   <link rel="stylesheet" href="styles.css"/>
+
+  <!-- Link to manifest -->
+  <link rel="manifest" href="manifest.webmanifest">
 </head>
 <body>
   <header class="header">
@@ -39,9 +43,22 @@
     <div class="total" id="total" aria-live="polite"></div>
     <button class="calc-btn" id="calc">Calculate Total</button>
 
-    <div class="footer">No per-item prices are displayed. Totals are computed according to internal rules.</div>
+    <div class="footer">
+      No per-item prices are displayed. Totals are computed according to internal rules.
+    </div>
   </div>
 
+  <!-- Main Script -->
   <script src="script.js"></script>
+
+  <!-- Service Worker -->
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js")
+        .then(reg => console.log("Service Worker registered:", reg))
+        .catch(err => console.error("Service Worker registration failed:", err));
+    }
+  </script>
 </body>
 </html>
+
