@@ -2,7 +2,7 @@
 (() => {
   const modes = {
     fresher: { first: 900, extra: 450 },
-    endorsement: { first: 1150, extra: 550 }
+    endorsement: { first: 1150, extra: 900 }
   };
 
   let currentMode = 'fresher';
