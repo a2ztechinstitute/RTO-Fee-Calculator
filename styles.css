@@ -1,0 +1,123 @@
+/* Global */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0d0d0d; /* Dark background */
+  color: #ffffff;      /* White text */
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: #0d0d0d;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+}
+
+.brand img {
+  height: 40px;
+  margin-right: 10px;
+}
+
+.title .name {
+  font-weight: bold;
+  color: #ff2e2e;
+}
+
+.title .sub {
+  font-size: 0.9em;
+  color: #aaa;
+}
+
+.call {
+  color: #ff6600;
+  font-weight: bold;
+}
+
+/* Main container */
+.container {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Section label */
+.section-label {
+  margin: 15px 0 10px;
+  font-weight: bold;
+  color: #ff6600;
+}
+
+/* Mode buttons */
+.mode-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: 2px solid #ff6600;
+  border-radius: 8px;
+  background: #1a1a1a;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn.active {
+  background: #ff6600;
+  color: #fff;
+}
+
+/* Checklist */
+.checklist {
+  text-align: left;
+  margin: 20px 0;
+}
+
+.checkbox {
+  display: block;
+  margin: 10px 0;
+  font-size: 1.1em;
+}
+
+/* Calculate button */
+.calc-btn {
+  width: 100%;
+  padding: 15px;
+  font-size: 1.2em;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(to right, #ff6600, #ff2e2e);
+  color: #fff;
+  cursor: pointer;
+}
+
+.calc-btn:hover {
+  opacity: 0.9;
+}
+
+/* Total result */
+.total {
+  margin: 20px 0;
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #00ff99;
+}
+
+/* Footer */
+.footer {
+  font-size: 0.8em;
+  color: #aaa;
+  margin-top: 15px;
+}
