@@ -15,6 +15,7 @@
     .hidden { display: none; }
     .btn.active { background-color: #007bff; color: white; }
     .total { margin-top: 15px; font-weight: bold; font-size: 18px; }
+    .note { margin-top: 10px; font-size: 14px; color: #444; }
   </style>
 </head>
 <body>
@@ -45,6 +46,7 @@
       <label class="checkbox"><input type="checkbox" value="Forklift"/> <span>Forklift</span></label>
       <label class="checkbox"><input type="checkbox" value="Crane"/> <span>Crane</span></label>
       <label class="checkbox"><input type="checkbox" value="Excavator"/> <span>Excavator</span></label>
+      <div class="note">Pricing: First selection ₹900, each additional ₹450</div>
     </div>
 
     <!-- Endorsement Checklist -->
@@ -56,13 +58,14 @@
       <label class="checkbox"><input type="checkbox" value="Forklift"/> <span>Forklift</span></label>
       <label class="checkbox"><input type="checkbox" value="Crane"/> <span>Crane</span></label>
       <label class="checkbox"><input type="checkbox" value="Excavator"/> <span>Excavator</span></label>
+      <div class="note">Pricing: First selection ₹1150, each additional ₹900</div>
     </div>
 
     <div class="total" id="total" aria-live="polite"></div>
     <button class="calc-btn" id="calc">Calculate Total</button>
 
     <div class="footer">
-      No per-item prices are displayed. Totals are computed according to internal rules.
+      Totals are computed according to the pricing rules shown above.
     </div>
   </div>
 
