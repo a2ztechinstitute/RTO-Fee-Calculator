@@ -10,6 +10,11 @@
 
   <!-- Link to manifest -->
   <link rel="manifest" href="manifest.webmanifest">
+
+  <style>
+    .hidden { display: none; }
+    .btn.active { background-color: #007bff; color: white; }
+  </style>
 </head>
 <body>
   <header class="header">
@@ -32,16 +37,22 @@
       <button class="btn" id="btn-endorsement" aria-pressed="false">Endorsement</button>
     </div>
 
-    <div class="checklist" id="checklist">
+    <!-- Fresher Checklist -->
+    <div class="checklist" id="checklist-fresher">
       <label class="checkbox"><input type="checkbox" value="LMV"/> <span>LMV</span></label>
       <label class="checkbox"><input type="checkbox" value="MCWG"/> <span>MCWG</span></label>
-      <label class="checkbox"><input type="checkbox" value="TRANS"/> <span>TRANS</span></label>
-      <label class="checkbox"><input type="checkbox" value="Trailer"/> <span>Trailer</span></label>
       <label class="checkbox"><input type="checkbox" value="Forklift"/> <span>Forklift</span></label>
       <label class="checkbox"><input type="checkbox" value="Crane"/> <span>Crane</span></label>
       <label class="checkbox"><input type="checkbox" value="Excavator"/> <span>Excavator</span></label>
-      <label class="checkbox"><input type="checkbox" value="Agricultural Equipment"/> <span>Agricultural Equipment</span></label>
-      
+    </div>
+
+    <!-- Endorsement Checklist -->
+    <div class="checklist hidden" id="checklist-endorsement">
+      <label class="checkbox"><input type="checkbox" value="LMV"/> <span>LMV</span></label>
+      <label class="checkbox"><input type="checkbox" value="MCWG"/> <span>MCWG</span></label>
+      <label class="checkbox"><input type="checkbox" value="Forklift"/> <span>Forklift</span></label>
+      <label class="checkbox"><input type="checkbox" value="Crane"/> <span>Crane</span></label>
+      <label class="checkbox"><input type="checkbox" value="Excavator"/> <span>Excavator</span></label>
     </div>
 
     <div class="total" id="total" aria-live="polite"></div>
@@ -55,6 +66,28 @@
   <!-- Main Script -->
   <script src="script.js"></script>
 
+  <!-- Toggle Script -->
+  <script>
+    const btnFresher = document.getElementById("btn-fresher");
+    const btnEndorsement = document.getElementById("btn-endorsement");
+    const fresherList = document.getElementById("checklist-fresher");
+    const endorsementList = document.getElementById("checklist-endorsement");
+
+    btnFresher.addEventListener("click", () => {
+      btnFresher.classList.add("active");
+      btnEndorsement.classList.remove("active");
+      fresherList.classList.remove("hidden");
+      endorsementList.classList.add("hidden");
+    });
+
+    btnEndorsement.addEventListener("click", () => {
+      btnEndorsement.classList.add("active");
+      btnFresher.classList.remove("active");
+      endorsementList.classList.remove("hidden");
+      fresherList.classList.add("hidden");
+    });
+  </script>
+
   <!-- Service Worker -->
   <script>
     if ("serviceWorker" in navigator) {
@@ -65,4 +98,3 @@
   </script>
 </body>
 </html>
-
