@@ -5,17 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>A2Z RTO Fees Calculator</title>
 
-  <!-- Link to external stylesheet -->
   <link rel="stylesheet" href="styles.css"/>
-
-  <!-- Link to manifest -->
   <link rel="manifest" href="manifest.webmanifest">
 
   <style>
-    .hidden { display: none; }
-    .btn.active { background-color: #007bff; color: white; }
-    .total { margin-top: 15px; font-weight: bold; font-size: 18px; }
-    .note { margin-top: 10px; font-size: 14px; color: #444; }
+    .hidden{display:none}
+    .btn.active{background:#007bff;color:#fff}
+    .total{margin-top:12px;font-weight:700;font-size:18px}
+    .note{margin-top:8px;font-size:14px;color:#444}
+    .breakdown{margin-top:6px;font-size:13px;color:#555}
   </style>
 </head>
 <body>
@@ -40,7 +38,7 @@
     </div>
 
     <!-- Fresher Checklist -->
-    <div class="checklist" id="checklist-fresher">
+    <div class="checklist" id="checklist-fresher" aria-labelledby="btn-fresher">
       <label class="checkbox"><input type="checkbox" value="LMV"/> <span>LMV</span></label>
       <label class="checkbox"><input type="checkbox" value="MCWG"/> <span>MCWG</span></label>
       <label class="checkbox"><input type="checkbox" value="Forklift"/> <span>Forklift</span></label>
@@ -50,7 +48,7 @@
     </div>
 
     <!-- Endorsement Checklist -->
-    <div class="checklist hidden" id="checklist-endorsement">
+    <div class="checklist hidden" id="checklist-endorsement" aria-labelledby="btn-endorsement">
       <label class="checkbox"><input type="checkbox" value="LMV"/> <span>LMV</span></label>
       <label class="checkbox"><input type="checkbox" value="MCWG"/> <span>MCWG</span></label>
       <label class="checkbox"><input type="checkbox" value="Trans"/> <span>Trans</span></label>
@@ -61,7 +59,8 @@
       <div class="note">Pricing: First selection ₹1150, each additional ₹900</div>
     </div>
 
-    <div class="total" id="total" aria-live="polite"></div>
+    <div class="total" id="total" aria-live="polite">Total Fees: ₹0</div>
+    <div class="breakdown" id="breakdown"></div>
     <button class="calc-btn" id="calc">Calculate Total</button>
 
     <div class="footer">
@@ -69,37 +68,44 @@
     </div>
   </div>
 
-  <!-- Main Script -->
   <script src="script.js"></script>
 
-  <!-- Toggle Script -->
   <script>
+    // Toggle + clear hidden selections to avoid wrong totals
     const btnFresher = document.getElementById("btn-fresher");
     const btnEndorsement = document.getElementById("btn-endorsement");
     const fresherList = document.getElementById("checklist-fresher");
     const endorsementList = document.getElementById("checklist-endorsement");
 
-    btnFresher.addEventListener("click", () => {
+    function clearChecks(container){
+      container.querySelectorAll('input[type="checkbox"]').forEach(cb=>cb.checked=false);
+    }
+
+    function showFresher(){
       btnFresher.classList.add("active");
       btnEndorsement.classList.remove("active");
-      fresherList.classList.remove("hidden");
       endorsementList.classList.add("hidden");
-    });
+      fresherList.classList.remove("hidden");
+      clearChecks(endorsementList);
+      window.updateTotal(); // recalc
+    }
 
-    btnEndorsement.addEventListener("click", () => {
+    function showEndorsement(){
       btnEndorsement.classList.add("active");
       btnFresher.classList.remove("active");
-      endorsementList.classList.remove("hidden");
       fresherList.classList.add("hidden");
-    });
+      endorsementList.classList.remove("hidden");
+      clearChecks(fresherList);
+      window.updateTotal(); // recalc
+    }
+
+    btnFresher.addEventListener("click", showFresher);
+    btnEndorsement.addEventListener("click", showEndorsement);
   </script>
 
-  <!-- Service Worker -->
   <script>
     if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("service-worker.js")
-        .then(reg => console.log("Service Worker registered:", reg))
-        .catch(err => console.error("Service Worker registration failed:", err));
+      navigator.serviceWorker.register("service-worker.js").catch(()=>{});
     }
   </script>
 </body>
